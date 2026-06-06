@@ -1103,8 +1103,8 @@ function enviarMensagem() {
     + "&nome="     + encodeURIComponent(nome)
     + "&mensagem=" + encodeURIComponent(msg);
 
-  var iframe = document.getElementById("sheets-iframe");
-  iframe.src = url;
+  var img = new Image();
+  img.src = url;
 
   setTimeout(function() {
     btn.textContent = "\u2713 Mensagem enviada!";
