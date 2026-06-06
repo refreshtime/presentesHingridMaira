@@ -1095,17 +1095,13 @@ function enviarMensagem() {
   feedback.style.color = "var(--lavender)";
   feedback.textContent = "";
 
-  fetch(SHEETS_URL, {
-    method: "POST",
-    mode: "no-cors",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      presente: currentItem,
-      valor: valor,
-      nome: nome,
-      mensagem: msg
-    })
-  }).then(function() {
+  var url = SHEETS_URL
+    + "?presente=" + encodeURIComponent(currentItem)
+    + "&valor="    + encodeURIComponent(valor)
+    + "&nome="     + encodeURIComponent(nome)
+    + "&mensagem=" + encodeURIComponent(msg);
+
+  fetch(url, { method: "GET", mode: "no-cors" }).then(function() {
     btn.textContent = "\u2713 Mensagem enviada!";
     btn.style.background = "#2a7a4a";
     feedback.textContent = "Obrigado, " + nome + "! Os noivos ficaram felizes \u2665";
