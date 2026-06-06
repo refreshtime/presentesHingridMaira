@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lista de Presentes — Hingrid &amp; Ma&#237;ra</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #C8AA8A;
+  --paper: #FAF8F4;
+  --lavender: #6B5B8E;
+  --lavender-light: #9B8DB8;
+  --lavender-pale: #D4C8E8;
+  --gold: #B8975A;
+  --gold-light: #D4B87A;
+  --text: #2C2440;
+  --text-mid: #6B6070;
+  --text-light: #9B92A8;
+  --border: #E0D8CC;
+  --green: #25D366;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Jost", sans-serif;
+  background-color: var(--bg);
+  background-image: url("Lavandas Aquarela.png");
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  min-height: 100vh;
+  font-weight: 300;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 12px 60px;
+}
+
+/* ── TOP NAV ── */
+.top-nav {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.nav-link {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: #FAF8F4;
+  text-decoration: none;
+  padding: 10px 24px;
+  border: 1px solid rgba(250,248,244,0.6);
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+.nav-link:hover { background: rgba(250,248,244,0.15); }
+
+/* ── PAPER CARD ── */
+.paper-card {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  background-color: var(--paper);
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow:
+    0 1px 0 #fff inset,
+    0 8px 32px rgba(44,36,64,0.16),
+    0 2px 8px rgba(44,36,64,0.08);
+}
+
+.paper-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.5;
+}
+
+/* ── LAVENDER DECO ── */
+.deco-tr {
+  position: absolute;
+  top: 0; right: 0;
+  width: 130px; height: 160px;
+  z-index: 2; pointer-events: none;
+}
+.deco-tr svg { width: 100%; height: 100%; }
+
+.deco-bl {
+  position: absolute;
+  bottom: 16px; left: -6px;
+  width: 72px; height: 90px;
+  z-index: 2; pointer-events: none;
+  opacity: 0.45;
+  transform: rotate(22deg) scaleX(-1);
+}
+.deco-bl svg { width: 100%; height: 100%; }
+
+/* ── CARD INNER ── */
+.card-inner {
+  position: relative;
+  z-index: 3;
+  padding: 34px 16px 36px;
+}
+
+/* ── HEADER ── */
+.card-header { text-align: center; margin-bottom: 26px; }
+
+.date-label {
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--lavender);
+  margin-bottom: 10px;
+}
+
+.couple-names {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 40px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.15;
+}
+.couple-names .amp {
+  font-size: 30px;
+  color: var(--lavender);
+  margin: 0 7px;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 12px auto 0;
+  width: fit-content;
+}
+.divider .line {
+  width: 38px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-light));
+}
+.divider .line.r {
+  background: linear-gradient(90deg, var(--gold-light), transparent);
+}
+.divider .dot {
+  width: 5px; height: 5px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  opacity: 0.7;
+}
+
+.section-label {
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: var(--text-mid);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* ── GIFT GRID ── */
+.gift-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+/* full-width card */
+.gift-grid .full { grid-column: 1 / -1; }
+
+/* ── GIFT CARD ── */
+.gift-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: visible;
+  cursor: pointer;
+  transition: box-shadow 0.25s, border-color 0.25s, transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+}
+.gift-card:hover {
+  border-color: var(--lavender-pale);
+  box-shadow: 0 4px 18px rgba(107,91,142,0.13);
+  transform: translateY(-1px);
+}
+
+.gift-card-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  flex-shrink: 0;
+  border-radius: 6px 6px 0 0;
+}
+
+/* for the "valor livre" card – no image, gradient bg */
+.gift-card-img-placeholder {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, #EDE8F8, #D4C8E8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+}
+
+.gift-card-body {
+  padding: 10px 12px 14px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.gift-card-body > div {
+  flex: 1;
+}
+
+.gift-card-name {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.25;
+}
+
+.gift-card-value {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--lavender);
+  letter-spacing: 0.03em;
+}
+
+.gift-card-btn {
+  display: block;
+  width: 100%;
+  padding: 11px 8px;
+  background: var(--lavender);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-family: "Jost", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.gift-card-btn:hover { background: #5A4A7A; }
+
+/* valor livre card full-width styling */
+.gift-card.full .gift-card-img-placeholder {
+  aspect-ratio: unset;
+  height: 90px;
+  font-size: 28px;
+}
+
+/* ── ENVIO DIRETO CARD ── */
+.envio-card {
+  margin-top: 20px;
+  border: 1px solid var(--lavender-pale);
+  border-radius: 8px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #F5F2FF, #FAF8F4);
+}
+
+.envio-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.envio-body {
+  padding: 18px 20px 20px;
+}
+
+.envio-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  font-style: italic;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.envio-subtitle {
+  font-size: 15px;
+  color: var(--lavender);
+  margin-bottom: 14px;
+}
+
+.envio-address {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px 16px;
+}
+
+.envio-address p {
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+/* ── MODAL ── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(44,36,64,0.55);
+  z-index: 200;
+  align-items: flex-end;
+  justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+
+.modal-sheet {
+  background: var(--paper);
+  width: 100%;
+  max-width: 520px;
+  border-radius: 14px 14px 0 0;
+  padding: 0 0 env(safe-area-inset-bottom, 0px);
+  animation: slideUp 0.3s cubic-bezier(0.22,1,0.36,1) both;
+  max-height: 92vh;
+  overflow-y: auto;
+}
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+.modal-handle {
+  width: 36px; height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  margin: 16px auto 0;
+}
+
+.modal-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  margin-top: 16px;
+  background: #F0EDE8;
+}
+
+.modal-img-placeholder {
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(135deg, #EDE8F8, #D4C8E8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  margin-top: 16px;
+}
+
+.modal-body { padding: 20px 24px 28px; }
+
+.modal-item-name {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 26px;
+  font-style: italic;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.modal-item-value {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--lavender);
+  margin-bottom: 20px;
+}
+
+/* custom value input */
+.custom-value-wrap {
+  display: none;
+  margin-bottom: 16px;
+}
+.custom-value-wrap.show { display: block; }
+
+.custom-value-label {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text-mid);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.custom-value-input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  font-family: "Jost", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text);
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.custom-value-input:focus { border-color: var(--lavender-light); }
+
+/* pix box */
+.pix-label {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.pix-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  margin-bottom: 16px;
+}
+
+.pix-key {
+  flex: 1;
+  font-size: 14px;
+  color: var(--text);
+  font-weight: 400;
+  word-break: break-all;
+  user-select: all;
+}
+
+.btn-copy {
+  flex-shrink: 0;
+  padding: 8px 14px;
+  background: var(--lavender-pale);
+  color: var(--lavender);
+  border: none;
+  border-radius: 3px;
+  font-family: "Jost", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.btn-copy:hover { background: #C4B5DC; }
+.btn-copy.copied { background: #d4f0dc; color: #2a7a4a; }
+
+/* message */
+.msg-label {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text-mid);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.msg-textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  font-family: "Jost", sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text);
+  background: #fff;
+  resize: none;
+  height: 90px;
+  outline: none;
+  transition: border-color 0.2s;
+  margin-bottom: 18px;
+}
+.msg-textarea:focus { border-color: var(--lavender-light); }
+
+/* wa buttons */
+.wa-buttons { display: flex; flex-direction: column; gap: 8px; }
+
+.btn-wa {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  background: var(--green);
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-family: "Jost", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.btn-wa:hover { background: #1ebe5b; }
+
+.btn-close {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  background: transparent;
+  color: var(--text-mid);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-family: "Jost", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.2s;
+  margin-top: 8px;
+}
+.btn-close:hover { border-color: var(--text-mid); }
+
+/* pix instructions */
+.pix-instructions {
+  background: #F3F0F8;
+  border: 1px solid var(--lavender-pale);
+  border-radius: 6px;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+}
+.pix-instructions-title {
+  font-family: "Jost", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--lavender);
+  margin-bottom: 12px;
+}
+.pix-steps {
+  list-style: none;
+  counter-reset: step;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.pix-steps li {
+  counter-increment: step;
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.5;
+  padding-left: 30px;
+  position: relative;
+}
+.pix-steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 20px;
+  height: 20px;
+  background: var(--lavender);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+.pix-steps li strong { color: var(--text); }
+
+/* pix label tip */
+.pix-label-tip {
+  font-size: 13px;
+  color: var(--lavender-light);
+  font-weight: 300;
+}
+
+/* pix box principal */
+.pix-box-main {
+  background: #F8F6FF;
+  border-color: var(--lavender-pale);
+  border-radius: 3px 3px 0 0;
+  border-bottom: none;
+  margin-bottom: 0;
+  word-break: break-all;
+  font-size: 11px;
+  color: var(--text-mid);
+  user-select: all;
+  cursor: text;
+}
+
+/* botao copiar grande */
+.btn-copy-big {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background: var(--lavender);
+  color: #fff;
+  border: none;
+  border-radius: 0 0 6px 6px;
+  font-family: "Jost", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.2s;
+  margin-bottom: 6px;
+}
+.btn-copy-big:hover { background: #5A4A7A; }
+.btn-copy-big.copied { background: #2a7a4a; }
+
+.pix-copy-hint-old {
+  font-size: 11px;
+  color: var(--text-light);
+  text-align: center;
+  margin-bottom: 18px;
+  font-style: italic;
+  font-family: "Cormorant Garamond", serif;
+}
+
+/* qr toggle */
+.qr-toggle {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-bottom: 18px;
+  font-family: "Jost", sans-serif;
+}
+.qr-toggle summary {
+  font-size: 15px;
+  color: var(--text-mid);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.qr-toggle summary::before { content: "▸"; color: var(--lavender); font-size: 13px; }
+.qr-toggle[open] summary::before { content: "▾"; }
+.qr-toggle summary::-webkit-details-marker { display: none; }
+
+.modal-note {
+  font-size: 14px;
+  color: var(--text-mid);
+  text-align: center;
+  margin-top: 12px;
+}
+
+.pix-copy-hint {
+  font-size: 14px;
+  color: var(--text-mid);
+  text-align: center;
+  margin-bottom: 18px;
+}
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="https://refreshtime.github.io/Hingrid.Maira/" class="nav-link">Confirmar Presen&#231;a</a>
+</nav>
+
+<div class="paper-card">
+
+  <!-- Lavender top-right -->
+  <div class="deco-tr">
+    <svg viewBox="0 0 130 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="95" y1="155" x2="72" y2="40" stroke="#8B7355" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="95" y1="155" x2="105" y2="50" stroke="#8B7355" stroke-width="1.1" stroke-linecap="round"/>
+      <line x1="95" y1="155" x2="115" y2="70" stroke="#8B7355" stroke-width="1" stroke-linecap="round"/>
+      <ellipse cx="72" cy="37" rx="3.5" ry="5.5" fill="#7B6BA0" opacity="0.85"/>
+      <ellipse cx="69" cy="45" rx="3" ry="5" fill="#8B7BB0" opacity="0.8"/>
+      <ellipse cx="75" cy="43" rx="3" ry="5" fill="#7B6BA0" opacity="0.75"/>
+      <ellipse cx="66" cy="54" rx="2.5" ry="4.5" fill="#9B8DC0" opacity="0.7"/>
+      <ellipse cx="78" cy="52" rx="2.5" ry="4" fill="#8B7BB0" opacity="0.65"/>
+      <ellipse cx="72" cy="60" rx="2" ry="3.5" fill="#7B6BA0" opacity="0.6"/>
+      <ellipse cx="63" cy="62" rx="2" ry="3.5" fill="#9B8DC0" opacity="0.55"/>
+      <ellipse cx="105" cy="47" rx="3.5" ry="5.5" fill="#7B6BA0" opacity="0.85"/>
+      <ellipse cx="102" cy="55" rx="3" ry="5" fill="#8B7BB0" opacity="0.8"/>
+      <ellipse cx="108" cy="54" rx="3" ry="4.5" fill="#7B6BA0" opacity="0.75"/>
+      <ellipse cx="100" cy="63" rx="2.5" ry="4" fill="#9B8DC0" opacity="0.7"/>
+      <ellipse cx="110" cy="62" rx="2.5" ry="4" fill="#8B7BB0" opacity="0.65"/>
+      <ellipse cx="115" cy="67" rx="3" ry="5" fill="#7B6BA0" opacity="0.8"/>
+      <ellipse cx="112" cy="75" rx="2.5" ry="4.5" fill="#8B7BB0" opacity="0.75"/>
+      <ellipse cx="118" cy="74" rx="2.5" ry="4" fill="#7B6BA0" opacity="0.7"/>
+      <ellipse cx="80" cy="88" rx="6" ry="2.5" fill="#7A8C5A" opacity="0.4" transform="rotate(-30 80 88)"/>
+      <ellipse cx="69" cy="78" rx="5" ry="2" fill="#7A8C5A" opacity="0.35" transform="rotate(-40 69 78)"/>
+    </svg>
+  </div>
+
+  <!-- Lavender bottom-left -->
+  <div class="deco-bl">
+    <svg viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="40" y1="95" x2="30" y2="20" stroke="#8B7355" stroke-width="1" stroke-linecap="round"/>
+      <line x1="40" y1="95" x2="55" y2="30" stroke="#8B7355" stroke-width="0.9" stroke-linecap="round"/>
+      <ellipse cx="30" cy="17" rx="3" ry="5" fill="#7B6BA0" opacity="0.55"/>
+      <ellipse cx="27" cy="25" rx="2.5" ry="4.5" fill="#8B7BB0" opacity="0.5"/>
+      <ellipse cx="33" cy="24" rx="2.5" ry="4" fill="#7B6BA0" opacity="0.45"/>
+      <ellipse cx="55" cy="27" rx="3" ry="4.5" fill="#7B6BA0" opacity="0.55"/>
+      <ellipse cx="52" cy="35" rx="2.5" ry="4" fill="#8B7BB0" opacity="0.5"/>
+      <ellipse cx="58" cy="34" rx="2.5" ry="3.5" fill="#7B6BA0" opacity="0.45"/>
+    </svg>
+  </div>
+
+  <div class="card-inner">
+
+    <header class="card-header">
+      <p class="date-label">07 . 09 . 26</p>
+      <h1 class="couple-names">Hingrid<span class="amp">&amp;</span>Ma&#237;ra</h1>
+      <div class="divider">
+        <span class="line"></span>
+        <span class="dot"></span>
+        <span class="line r"></span>
+      </div>
+    </header>
+
+    <p class="section-label">Lista de Presentes</p>
+
+    <div class="gift-grid">
+
+      <!-- ── EXPERIÊNCIAS ── -->
+      <div class="gift-card" onclick="openModal('Jantar de Lua de Mel','R$ 400,00','Primeiro jantar casados.png',false)">
+        <img class="gift-card-img" src="Primeiro jantar casados.png" alt="Jantar" loading="lazy">
+        <div class="gift-card-body">
+          <div>
+            <p class="gift-card-name">Jantar de Lua de Mel</p>
+            <p class="gift-card-value">R$ 400,00 / cota</p>
+          </div>
+          <button class="gift-card-btn">Presentear</button>
+        </div>
+      </div>
+
+      <div class="gift-card" onclick="openModal('Caf\u00e9 da Manh\u00e3 Rec\u00e9m Casados','R$ 350,00','Caf\u00e9 da manh\u00e3 recem casados.png',false)">
+        <img class="gift-card-img" src="Café da manhã recem casados.png" alt="Caf&#xe9; da Manh&#xe3;" loading="lazy">
+        <div class="gift-card-body">
+          <div>
+            <p class="gift-card-name">Caf&#xe9; da Manh&#xe3; Rec&#xe9;m Casados</p>
+            <p class="gift-card-value">R$ 350,00 / cota</p>
+          </div>
+          <button class="gift-card-btn">Presentear</button>
+        </div>
+      </div>
+
+      <div class="gift-card" onclick="openModal('Massagem para o Casal','R$ 450,00','MASSAGEM PARA O CASAL.png',false)">
+        <img class="gift-card-img" src="MASSAGEM PARA O CASAL.png" alt="Massagem" loading="lazy">
+        <div class="gift-card-body">
+          <div>
+            <p class="gift-card-name">Massagem para o Casal</p>
+            <p class="gift-card-value">R$ 450,00 / cota</p>
+          </div>
+          <button class="gift-card-btn">Presentear</button>
+        </div>
+      </div>
+
+      <div class="gift-card" onclick="openModal('Passeio na Lua de Mel','R$ 270,00','Passeio na lua de mel .png',false)">
+        <img class="gift-card-img" src="Passeio na lua de mel .png" alt="Passeio" loading="lazy">
+        <div class="gift-card-body">
+          <div>
+            <p class="gift-card-name">Passeio na Lua de Mel</p>
+            <p class="gift-card-value">R$ 270,00 / cota</p>
+          </div>
+          <button class="gift-card-btn">Presentear</button>
+        </div>
+      </div>
+
+      <div class="gift-card" onclick="openModal('Cotas para Viagem','R$ 600,00','Cotas para viagem .png',false)">
+        <img class="gift-card-img" src="Cotas para viagem .png" alt="Viagem" loading="lazy">
+        <div class="gift-card-body">
+          <div>
+            <p class="gift-card-name">Cotas para Viagem</p>
+            <p class="gift-card-value">R$ 600,00 / cota</p>
+          </div>
+          <button class="gift-card-btn">Presentear</button>
+        </div>
+      </div>
+
+      <div class="gift-card" onclick="openModal('Cotas para Hospedagem','R$ 200,00','Hospedagem.png',false)">
+        <img class="gift-card-img" src="Hospedagem.png" alt="Hospedagem" loading="lazy">
+        <div class="gift-card-body">
+          <div>
+            <p class="gift-card-name">Cotas para Hospedagem</p>
+            <p class="gift-card-value">R$ 200,00 / cota</p>
+          </div>
+          <button class="gift-card-btn">Presentear</button>
+        </div>
+      </div>
+
+      <!-- ── ITENS ── -->
+      <div class="gift-card" onclick="openModal('Cotas para Batedeira','R$ 150,00','BATEDEIRA.png',false)">
+        <img class="gift-card-img" src="BATEDEIRA.png" alt="Batedeira" loading="lazy">
+        <div class="gift-card-body">
+          <div>
+            <p class="gift-card-name">Cotas para Batedeira</p>
+            <p class="gift-card-value">R$ 150,00 / cota</p>
+          </div>
+          <button class="gift-card-btn">Presentear</button>
+        </div>
+      </div>
+
+      <div class="gift-card" onclick="openModal('Cotas para Geladeira','R$ 500,00','GELADEIRA.png',false)">
+        <img class="gift-card-img" src="GELADEIRA.png" alt="Geladeira" loading="lazy">
+        <div class="gift-card-body">
+          <div>
+            <p class="gift-card-name">Cotas para Geladeira</p>
+            <p class="gift-card-value">R$ 500,00 / cota</p>
+          </div>
+          <button class="gift-card-btn">Presentear</button>
+        </div>
+      </div>
+
+      <div class="gift-card" onclick="openModal('Cotas para Fog\u00e3o','R$ 300,00','FOGO\u00c3O.png',false)">
+        <img class="gift-card-img" src="FOGÃO.png" alt="Fog&#xe3;o" loading="lazy">
+        <div class="gift-card-body">
+          <div>
+            <p class="gift-card-name">Cotas para Fog&#xe3;o</p>
+            <p class="gift-card-value">R$ 300,00 / cota</p>
+          </div>
+          <button class="gift-card-btn">Presentear</button>
+        </div>
+      </div>
+
+      <div class="gift-card" onclick="openModal('M\u00e1quina de Lavar Roupa','R$ 250,00','Maquina de lavar roupa..png',false)">
+        <img class="gift-card-img" src="Maquina de lavar roupa..png" alt="M&#xe1;quina de Lavar" loading="lazy">
+        <div class="gift-card-body">
+          <div>
+            <p class="gift-card-name">M&#xe1;quina de Lavar Roupa</p>
+            <p class="gift-card-value">R$ 250,00 / cota</p>
+          </div>
+          <button class="gift-card-btn">Presentear</button>
+        </div>
+      </div>
+
+      <!-- Presente Surpresa – full width -->
+      <div class="gift-card full" onclick="openModal('Presente Surpresa','',null,true)">
+        <img class="gift-card-img" src="Presente Surpresa.png" alt="Presente Surpresa" loading="lazy" style="aspect-ratio:unset;height:140px;">
+        <div class="gift-card-body">
+          <div>
+            <p class="gift-card-name">Presente Surpresa</p>
+            <p class="gift-card-value">Voc&#xea; escolhe o valor</p>
+          </div>
+          <button class="gift-card-btn">Presentear</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Envio Direto -->
+    <div class="envio-card">
+      <img class="envio-img" src="ENVIO DIRETO.png" alt="Envio direto">
+      <div class="envio-body">
+        <p class="envio-title">Quer enviar o presente fisicamente?</p>
+        <p class="envio-subtitle">Envie para o nosso endere&#xe7;o</p>
+        <div class="envio-address">
+          <p>Rua Joaquim Guarani, 485</p>
+          <p>Apartamento 62B</p>
+          <p>Jardim das Ac&#xe1;cias</p>
+          <p>CEP 04707&#x2011;061</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── MODAL ── -->
+<div class="modal-overlay" id="modal" onclick="closeOnOverlay(event)">
+  <div class="modal-sheet" id="modal-sheet">
+    <div class="modal-handle"></div>
+
+    <div id="modal-img-wrap"></div>
+
+    <div class="modal-body">
+      <p class="modal-item-name" id="modal-name"></p>
+      <p class="modal-item-value" id="modal-value-text"></p>
+
+      <!-- campo valor livre -->
+      <div class="custom-value-wrap" id="custom-wrap">
+        <label class="custom-value-label">Qual valor voc&#xea; gostaria de presentear?</label>
+        <input class="custom-value-input" id="custom-input" type="text" placeholder="R$ 0,00"
+               oninput="formatCurrency(this)">
+      </div>
+
+      <!-- pix instructions -->
+      <div class="pix-instructions">
+        <p class="pix-instructions-title">&#x1F4F2; Como fazer o PIX</p>
+        <ol class="pix-steps">
+          <li><strong>Abra o app</strong> do seu banco</li>
+          <li>Acesse a &#xe1;rea <strong>PIX</strong></li>
+          <li>Escolha <strong>&#x201C;Copia e Cola&#x201D;</strong> ou QR Code</li>
+          <li>Cole o c&#xf3;digo ou escaneie</li>
+          <li><strong>Informe o valor e confirme</strong></li>
+        </ol>
+      </div>
+
+      <!-- pix copia e cola – destaque principal -->
+      <span class="pix-label">&#x1F4F1; PIX Copia e Cola <span class="pix-label-tip">(recomendado no celular)</span></span>
+      <div class="pix-box pix-box-main">
+        <span class="pix-key" id="pix-key-text">00020126580014BR.GOV.BCB.PIX01365e2687fb-e0ef-4756-8f37-95dcc5f173da5204000053039865802BR5925Hingrid Priscila Fernande6009SAO PAULO621405106mVPnir2Nq6304A977</span>
+      </div>
+      <button class="btn-copy-big" id="copy-btn" onclick="copyPix()">&#x1F4CB; Copiar c&#xf3;digo PIX</button>
+      <p class="pix-copy-hint" id="copy-hint">Toque para copiar e cole no seu banco</p>
+
+      <!-- qr code – alternativa -->
+      <details class="qr-toggle">
+        <summary>Prefere escanear o QR Code?</summary>
+        <div id="qr-wrap" style="display:flex;justify-content:center;margin-top:14px;">
+          <div id="qrcode" style="padding:10px;background:#fff;border:1px solid var(--border);border-radius:6px;display:inline-block;"></div>
+        </div>
+      </details>
+
+      <!-- mensagem -->
+      <label class="msg-label" for="msg">Deixe uma mensagem (opcional)</label>
+      <textarea class="msg-textarea" id="msg" placeholder="Escreva sua mensagem para os noivos..."></textarea>
+
+      <button class="btn-close" onclick="closeModal()">Fechar</button>
+
+      <p class="modal-note">Cada cota pode ser presenteada mais de uma vez</p>
+    </div>
+  </div>
+</div>
+
+<script>
+var PIX_KEY = "00020126580014BR.GOV.BCB.PIX01365e2687fb-e0ef-4756-8f37-95dcc5f173da5204000053039865802BR5925Hingrid Priscila Fernande6009SAO PAULO621405106mVPnir2Nq6304A977";
+
+var currentItem = "";
+var isCustom    = false;
+var qrInstance  = null;
+
+function generateQR() {
+  var el = document.getElementById("qrcode");
+  el.innerHTML = "";
+  qrInstance = new QRCode(el, {
+    text: PIX_KEY,
+    width: 160,
+    height: 160,
+    colorDark: "#2C2440",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.M
+  });
+}
+
+function openModal(name, value, img, custom) {
+  currentItem = name;
+  isCustom    = custom;
+
+  document.getElementById("modal-name").textContent = name;
+  document.getElementById("modal-value-text").textContent = custom ? "Voc\u00ea escolhe o valor" : value + " por cota";
+
+  // imagem
+  var wrap = document.getElementById("modal-img-wrap");
+  if (img) {
+    wrap.innerHTML = '<img class="modal-img" src="' + img + '" alt="' + name + '">';
+  } else {
+    wrap.innerHTML = '<div class="modal-img-placeholder">\uD83C\uDF81</div>';
+  }
+
+  // campo valor livre
+  var customWrap = document.getElementById("custom-wrap");
+  if (custom) {
+    customWrap.classList.add("show");
+    document.getElementById("custom-input").value = "";
+  } else {
+    customWrap.classList.remove("show");
+  }
+
+  // pix
+  document.getElementById("pix-key-text").textContent = PIX_KEY;
+  document.getElementById("copy-btn").textContent = "Copiar";
+  document.getElementById("copy-btn").classList.remove("copied");
+
+  // mensagem
+  document.getElementById("msg").value = "";
+
+  generateQR();
+
+  document.getElementById("modal").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+
+function copyPix() {
+  var key = document.getElementById("pix-key-text").textContent;
+  navigator.clipboard.writeText(key).then(function() {
+    var btn  = document.getElementById("copy-btn");
+    var hint = document.getElementById("copy-hint");
+    btn.textContent = "\u2713 C\u00f3digo copiado!";
+    btn.classList.add("copied");
+    hint.textContent = "Agora abra seu banco e cole no PIX \u2192 Copia e Cola";
+    hint.style.color = "#2a7a4a";
+    setTimeout(function() {
+      btn.innerHTML = "\uD83D\uDCCB Copiar c\u00f3digo PIX";
+      btn.classList.remove("copied");
+      hint.textContent = "Toque para copiar e cole no seu banco";
+      hint.style.color = "";
+    }, 3500);
+  });
+}
+
+function formatCurrency(el) {
+  var v = el.value.replace(/\D/g,"");
+  if (!v) { el.value = ""; return; }
+  v = (parseInt(v,10)/100).toFixed(2);
+  el.value = "R$ " + v.replace(".",",").replace(/\B(?=(\d{3})+(?!\d))/g,".");
+}
+
+function closeModal() {
+  document.getElementById("modal").classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+function closeOnOverlay(e) {
+  if (e.target === document.getElementById("modal")) closeModal();
+}
+
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Escape") closeModal();
+});
+</script>
+
+</body>
+</html>
